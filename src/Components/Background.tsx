@@ -1,11 +1,36 @@
+import { useEffect, useState } from "react";
+import "../Css/Background.css";
+
 const Background = () => {
-  const bg = {
-    backgroundImage:
-      "url('https://static.vecteezy.com/system/resources/previews/028/663/748/non_2x/ai-ai-generatedrealistic-4k-sky-with-serene-cumulus-clouds-nature-s-atmospheric-beauty-in-stunning-detail-ideal-for-calming-and-scenic-concepts-free-photo.jpeg')",
-    backgroundSize: "cover",
-    height: "100vh",
-  };
-  return <div style={bg}></div>;
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const moveFactor = 20;
+      const x = (e.clientX - window.innerWidth / 2) / moveFactor;
+      const y = (e.clientY - window.innerHeight / 2) / moveFactor;
+      setPosition({ x, y });
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  return (
+    <div
+      className="background"
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        transition: "transform 0.1s ease-out", // Para hacer la transición más suave
+      }}
+    >
+      {/* Contenido de tu componente */}
+      <h1>Movimiento con el mouse</h1>
+    </div>
+  );
 };
 
 export default Background;

@@ -1,0 +1,10 @@
+.background {
+  background-image: url("https://static.vecteezy.com/system/resources/previews/028/663/748/non_2x/ai-ai-generatedrealistic-4k-sky-with-serene-cumulus-clouds-nature-s-atmospheric-beauty-in-stunning-detail-ideal-for-calming-and-scenic-concepts-free-photo.jpeg");
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: -25px;
+  left: -37px;
+  height: 105vh;
+  width: 105vw;
+}
